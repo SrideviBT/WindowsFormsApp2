@@ -11,12 +11,22 @@ namespace UnitTestProject2
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethodGet()
+        {
+            string obj = "944961";
+            string obj1 = "966962";
+           
+            Assert.AreEqual(RequestHelper.Get(obj).ToString(),RequestHelper.Get(obj1).ToString());
+
+        }
+
+        [TestMethod]
+        public void TestMethodDelete()
         {
             string obj = "717880";
             string obj1 = "717879";
-           
-            Assert.AreEqual(RequestHelper.Get(obj).ToString(),RequestHelper.Get(obj1).ToString());
+
+            Assert.AreEqual(RequestHelper.Delete(obj).ToString(), RequestHelper.Delete(obj1).ToString());
 
         }
     }
