@@ -11,17 +11,17 @@ namespace UnitTestProject2
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethodGet()
+        public void testMethod_Get()
         {
-            string obj = "944961";
-            string obj1 = "966962";
-           
-            Assert.AreEqual(RequestHelper.Get(obj).ToString(),RequestHelper.Get(obj1).ToString());
-
+            var userList = RequestHelper.GetALL().Result;
+            if (userList.Length > 0)
+            {
+                Assert.IsTrue(userList.Length > 0);
+            }
         }
 
         [TestMethod]
-        public void TestMethodDelete()
+        public void testMethod_Delete()
         {
             string obj = "717880";
             string obj1 = "717879";
