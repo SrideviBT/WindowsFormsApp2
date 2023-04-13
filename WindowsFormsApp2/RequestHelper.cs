@@ -31,9 +31,9 @@ namespace WindowsFormsApp2
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("apikey", authHeader);
-                using (HttpResponseMessage res = await client.GetAsync(baseURL + "public-api/users"))
+                using (HttpResponseMessage response = await client.GetAsync(baseURL + "public-api/users"))
                 {
-                    using (HttpContent content = res.Content)
+                    using (HttpContent content = response.Content)
                     {
                         string data = await content.ReadAsStringAsync();
                         if (data != null)
@@ -53,9 +53,9 @@ namespace WindowsFormsApp2
             {
                 client.DefaultRequestHeaders.Add("apikey", authHeader);
 
-                using (HttpResponseMessage res = await client.GetAsync(baseURL + "/public-api/users/"+ id))
+                using (HttpResponseMessage response = await client.GetAsync(baseURL + "/public-api/users/"+ id))
                 {
-                    using (HttpContent content = res.Content)
+                    using (HttpContent content = response.Content)
                     {
                         string data = await content.ReadAsStringAsync();
                         if (data != null)
@@ -85,9 +85,9 @@ namespace WindowsFormsApp2
                 client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", authHeader);
                
-                using (HttpResponseMessage res = await client.PostAsync(baseURL + "/public-api/users/", stringContent)) 
+                using (HttpResponseMessage response = await client.PostAsync(baseURL + "/public-api/users/", stringContent)) 
                 {
-                    using (HttpContent content = res.Content)
+                    using (HttpContent content = response.Content)
                     {
                         string data = await content.ReadAsStringAsync();
                         if (data != null)
@@ -122,9 +122,9 @@ namespace WindowsFormsApp2
                 new AuthenticationHeaderValue("Bearer", authHeader);
 
 
-                using (HttpResponseMessage res = await client.PutAsync(baseURL + "/public-api/users/" + id, stringContent))
+                using (HttpResponseMessage response = await client.PutAsync(baseURL + "/public-api/users/" + id, stringContent))
                 {
-                    using (HttpContent content = res.Content)
+                    using (HttpContent content = response.Content)
                     {
                         string data = await content.ReadAsStringAsync();
                         if (data != null)
@@ -149,11 +149,11 @@ namespace WindowsFormsApp2
                 new AuthenticationHeaderValue("Bearer", authHeader);
 
 
-                using (HttpResponseMessage res = await client.DeleteAsync(baseURL + "/public-api/users/" + id))
+                using (HttpResponseMessage response = await client.DeleteAsync(baseURL + "/public-api/users/" + id))
                 {
-                    using (HttpContent content = res.Content)
+                    using (HttpContent content = response.Content)
                     {
-                        MessageBox.Show(res.StatusCode.ToString());
+                        MessageBox.Show(response.StatusCode.ToString());
                         string data = await content.ReadAsStringAsync();
                         if (data != null)
                         {
