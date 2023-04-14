@@ -31,5 +31,31 @@ namespace UnitTestProject2
             };
 
         }
+
+        [TestMethod]
+        public void testMethod_Post()
+        {
+            string name = "Sridevi";
+            string email = "sridevi@gmail.com";
+            string gender = "female";
+            string status = "active";
+            var response = RequestHelper.Post(name,email,gender,status).Result;
+            if (response.Length > 0)
+            {
+                Assert.IsTrue(true,"OK");
+            };
+
+        }
+
+        [TestMethod]
+        public void testMethod_Delete()
+        {
+            string id = "974261";
+            var response = RequestHelper.Delete(id).Result;
+            
+             Assert.IsTrue(true,String.Empty);
+            
+
+        }
     }
 }

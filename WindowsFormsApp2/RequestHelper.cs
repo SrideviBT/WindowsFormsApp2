@@ -31,7 +31,8 @@ namespace WindowsFormsApp2
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Bearer", authHeader);
+                client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", authHeader);
                 using (HttpResponseMessage response = await client.GetAsync(baseURL + "public-api/users"))
                 {
                     using (HttpContent content = response.Content)
@@ -52,7 +53,8 @@ namespace WindowsFormsApp2
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Bearer", authHeader);
+                client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", authHeader);
 
                 using (HttpResponseMessage response = await client.GetAsync(baseURL + "/public-api/users/"+ id))
                 {
