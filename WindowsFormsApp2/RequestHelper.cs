@@ -18,6 +18,7 @@ using System.Security.Cryptography;
 using System.Security.Policy;
 using System.IO;
 using System.Web;
+using System.Web.UI;
 
 namespace WindowsFormsApp2
 {
@@ -30,7 +31,7 @@ namespace WindowsFormsApp2
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("apikey", authHeader);
+                client.DefaultRequestHeaders.Add("Bearer", authHeader);
                 using (HttpResponseMessage response = await client.GetAsync(baseURL + "public-api/users"))
                 {
                     using (HttpContent content = response.Content)
@@ -51,7 +52,7 @@ namespace WindowsFormsApp2
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("apikey", authHeader);
+                client.DefaultRequestHeaders.Add("Bearer", authHeader);
 
                 using (HttpResponseMessage response = await client.GetAsync(baseURL + "/public-api/users/"+ id))
                 {
@@ -168,8 +169,12 @@ namespace WindowsFormsApp2
 
         public static string BeautifyJson(string jsonStr)
         {
-            JToken parseJson = JToken.Parse(jsonStr);
-            return parseJson.ToString(Formatting.Indented);
+           
+                JToken parseJson = JToken.Parse(jsonStr);
+
+                return parseJson.ToString(Formatting.Indented);
+            
+            
         }
     }
 }

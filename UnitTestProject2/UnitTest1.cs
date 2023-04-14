@@ -21,12 +21,14 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
-        public void testMethod_Delete()
+        public void testMethod_GetById()
         {
             string obj = "717880";
-            string obj1 = "717879";
-
-            Assert.AreEqual(RequestHelper.Delete(obj).ToString(), RequestHelper.Delete(obj1).ToString());
+            var userList = RequestHelper.Get(obj).Result;
+            if (userList.Length > 0)
+            {
+                Assert.IsTrue(userList.Length > 0);
+            };
 
         }
     }

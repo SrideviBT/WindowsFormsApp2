@@ -20,6 +20,7 @@ namespace WindowsFormsApp2
         private async void button1_Click(object sender, EventArgs e)
         {
           var response=await  RequestHelper.GetALL();
+           
             richTextBox1.Text =RequestHelper.BeautifyJson(response);
         }
 
@@ -42,19 +43,26 @@ namespace WindowsFormsApp2
 
         private async void button7_Click(object sender, EventArgs e)
         {
-            var response = await RequestHelper.Put(textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text);
-            richTextBox1.Text = RequestHelper.BeautifyJson(response);
+            if (textBox2.Text == null || textBox2.Text == "")
+            {
+                MessageBox.Show("Please enter some data to update");
+            }
+            else
+            {
+                var response = await RequestHelper.Put(textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text);
+                richTextBox1.Text = RequestHelper.BeautifyJson(response);
+             }
         }
 
         private async void button8_Click(object sender, EventArgs e)
         {
-            var response = await RequestHelper.Delete(textBox2.Text);
             if (textBox2.Text == null || textBox2.Text == "")
             {
                 MessageBox.Show("Please enter an ID to delete");
             }
             else
-            { 
+            {
+                var response = await RequestHelper.Delete(textBox2.Text);
                 MessageBox.Show("Deleted");
             }
         }
