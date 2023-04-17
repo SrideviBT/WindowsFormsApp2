@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using WindowsFormsApp2;
@@ -36,13 +37,13 @@ namespace UnitTestProject2
         public void testMethod_Post()
         {
             string name = "Sridevi";
-            string email = "sridevi@gmail.com";
+            string email = "sridevi98@gmail.com";
             string gender = "female";
             string status = "active";
             var response = RequestHelper.Post(name,email,gender,status).Result;
             if (response.Length > 0)
             {
-                Assert.IsTrue(true,"OK");
+                Assert.IsNotNull(response);
             };
 
         }
@@ -53,7 +54,7 @@ namespace UnitTestProject2
             string id = "974261";
             var response = RequestHelper.Delete(id).Result;
             
-             Assert.IsTrue(true,String.Empty);
+             Assert.IsTrue(true,response);
             
 
         }
